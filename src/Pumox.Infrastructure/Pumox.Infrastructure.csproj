@@ -8,4 +8,10 @@
     <ProjectReference Include="../Pumox.Core/Pumox.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.0"/>
+  </ItemGroup>
+
 </Project>
