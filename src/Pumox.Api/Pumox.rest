@@ -1,0 +1,19 @@
+@url = https://localhost:5001
+
+### CREATE new company
+POST {{url}}/company/create
+Content-Type: application/json
+
+{
+    "name": "nowa firma3",
+    "establishmentYear": 2019,
+    "Employees": 
+    [
+        {
+            "DateOfBirth": "2012-03-21T00:00Z",
+            "FirstName": "imie3",
+            "LastName": "nazwisko3",
+            "JobTitle": "Manager"
+        },
+    ]
+}

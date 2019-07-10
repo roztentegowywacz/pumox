@@ -1,6 +1,9 @@
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pumox.Core.Domain.Repositories;
+using Pumox.Infrastructure.Data.Repositories;
 
 namespace Pumox.Infrastructure.Data
 {
@@ -21,6 +24,12 @@ namespace Pumox.Infrastructure.Data
             services.AddDbContext<AppDbContext>(options => 
                 options.UseSqlite(databaseOptions.ConnectionString));
             
+            return services;
+        }
+
+        public static IServiceCollection RegisterAllRepositories(this IServiceCollection services)
+        {
+            services.AddTransient<ICompaniesRepository, CompaniesRepository>();
             return services;
         }
     }
