@@ -4,7 +4,7 @@ namespace Pumox.Core.Domain.Entities
 {
     public class Company
     {
-        public ulong CompanyId { get; set; }
+        public ulong Id { get; set; }
         public string Name { get; set; }
         public int EstablishmentYear { get; set; }
 

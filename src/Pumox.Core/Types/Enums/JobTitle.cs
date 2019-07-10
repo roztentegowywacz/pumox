@@ -1,4 +1,4 @@
-namespace Pumox.Core.Types
+namespace Pumox.Core.Types.Enums
 {
     public enum JobTitle
     {

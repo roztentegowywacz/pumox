@@ -1,11 +1,11 @@
 using System;
-using Pumox.Core.Types;
+using Pumox.Core.Types.Enums;
 
 namespace Pumox.Core.Domain.Entities
 {
     public class Employe
     {
-        public ulong EmployeId { get; set; }
+        public ulong Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
