@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -11,6 +12,9 @@ namespace Pumox.Infrastructure.Mvc
         public static IMvcCoreBuilder AddCustomMvc(this IServiceCollection services)
             => services
                 .AddMvcCore()
+                .AddFluentValidation(fv => {
+                    fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                })
                 .AddJsonFormatters()
                 .AddDefaultJsonOptions()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

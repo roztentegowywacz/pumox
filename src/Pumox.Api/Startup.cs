@@ -22,6 +22,7 @@ namespace Pumox.Api
         {
             services.RegisterAllRepositories();
             services.RegisterAllServices();
+            services.RegisterAllValidators();
 
             services.AddSqlite();
             services.AddCustomMvc();

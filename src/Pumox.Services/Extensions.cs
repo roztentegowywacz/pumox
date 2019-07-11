@@ -1,7 +1,9 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using Pumox.Services.Companies.Commands.CreateCompany;
 using Pumox.Services.Dispatchers;
 
 namespace Pumox.Services
@@ -25,6 +27,12 @@ namespace Pumox.Services
         {
             services.AddScoped<IDispatcher, Dispatcher>();
             services.AddScoped<ICommandDispatcher, CommandDispatcher>();
+            return services;
+        }
+
+        public static IServiceCollection RegisterAllValidators(this IServiceCollection services)
+        {
+            services.AddTransient<IValidator<CreateCompanyCommand>, CreateCompanyValidator>();
             return services;
         }
     }

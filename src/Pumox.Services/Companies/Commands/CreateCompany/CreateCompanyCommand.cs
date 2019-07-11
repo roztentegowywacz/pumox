@@ -1,6 +1,7 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Pumox.Services.Companies.Dtos;
+using Pumox.Core.Types.Enums;
 
 namespace Pumox.Services.Companies.Commands.CreateCompany
 {
@@ -8,15 +9,23 @@ namespace Pumox.Services.Companies.Commands.CreateCompany
     {
         public string Name { get; }
         public int EstablishmentYear { get; }
-        public ICollection<EmployeDto> Employees { get; } = new List<EmployeDto>();
+        public ICollection<Employer> Employees { get; } = new List<Employer>();
 
         [JsonConstructor]
         public CreateCompanyCommand(string name, int establishmentYear,
-            ICollection<EmployeDto> employees)
+            ICollection<Employer> employees)
         {
             Name = name;
             EstablishmentYear = establishmentYear;
             Employees = employees;
+        }
+
+        public class Employer
+        {
+            public string FirstName { get; }
+            public string LastName { get; }
+            public DateTime DateOfBirth { get; }
+            public JobTitle JobTitle { get; }
         }
     }
 }
