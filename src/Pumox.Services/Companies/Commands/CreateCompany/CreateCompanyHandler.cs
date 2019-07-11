@@ -28,7 +28,7 @@ namespace Pumox.Services.Companies.Commands.CreateCompany
                     JobTitle = x.JobTitle
                 }).ToList()
             };
-            await _companiesRepository.AddAsync(company);
+            _companiesRepository.Add(company);
             await _companiesRepository.SaveChangesAsync();
             var companyId = company.Id;
         }

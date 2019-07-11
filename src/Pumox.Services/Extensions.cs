@@ -4,6 +4,8 @@ using System.Reflection;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Pumox.Services.Companies.Commands.CreateCompany;
+using Pumox.Services.Companies.Commands.DeleteCompany;
+using Pumox.Services.Companies.Commands.UpdateCompany;
 using Pumox.Services.Dispatchers;
 
 namespace Pumox.Services
@@ -33,6 +35,8 @@ namespace Pumox.Services
         public static IServiceCollection RegisterAllValidators(this IServiceCollection services)
         {
             services.AddTransient<IValidator<CreateCompanyCommand>, CreateCompanyValidator>();
+            services.AddTransient<IValidator<UpdateCompanyCommand>, UpdateCompanyValidator>();
+            services.AddTransient<IValidator<DeleteCompanyCommand>, DeleteCompanyValidator>();
             return services;
         }
     }

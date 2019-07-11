@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Pumox.Core.Types.Enums;
 
-namespace Pumox.Services.Companies.Commands.CreateCompany
+namespace Pumox.Services.Companies.Commands.UpdateCompany
 {
-    public class CreateCompanyCommand : ICommand
+    public class UpdateCompanyCommand : ICommand
     {
+        public ulong Id { get; set; }
         public string Name { get; }
         public int EstablishmentYear { get; }
-        public ICollection<CreateEmployer> Employees { get; } = new List<CreateEmployer>();
+        public IEnumerable<UpdateEmployer> Employees { get; } = new List<UpdateEmployer>();
 
         [JsonConstructor]
-        public CreateCompanyCommand(string name, int establishmentYear,
-            ICollection<CreateEmployer> employees)
+        public UpdateCompanyCommand(string name, int establishmentYear,
+            IEnumerable<UpdateEmployer> employees)
         {
             Name = name;
             EstablishmentYear = establishmentYear;
             Employees = employees;
         }
 
-        public class CreateEmployer
+        public class UpdateEmployer
         {
             public string FirstName { get; }
             public string LastName { get; }
