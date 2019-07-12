@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,5 +29,16 @@ namespace Pumox.Infrastructure.Data
 
         public static IServiceCollection RegisterAllRepositories(this IServiceCollection services)
             => services.AddTransient<ICompaniesRepository, CompaniesRepository>();
+
+        public static void BuildDatabase(this IApplicationBuilder builder)
+        {
+            using (var serviceScope = builder.ApplicationServices.CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
+
+                context.Database.Migrate();
+                DbInitializer.Initialize(context);
+            }
+        }
     }
 }

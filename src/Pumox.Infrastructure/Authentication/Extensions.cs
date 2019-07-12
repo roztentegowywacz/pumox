@@ -1,3 +1,4 @@
+using System.Linq;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,9 +18,9 @@ namespace Pumox.Infrastructure.Authentication
                 configuration = serviceProvider.GetService<IConfiguration>();
             }
 
-            var options = configuration.GetSection("AdminsCredentials").Get<FakedAdmins>();
+            var options = configuration.GetSection("AdminsCredentials").Get<Admins>();
 
-            return services.AddSingleton<FakedAdmins>(options);
+            return services.AddSingleton<Admins>(options);
         }
     }
 }

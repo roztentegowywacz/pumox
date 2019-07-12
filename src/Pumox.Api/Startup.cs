@@ -43,6 +43,8 @@ namespace Pumox.Api
                 app.UseHsts();
             }
 
+            app.BuildDatabase();
+
             app.UseHttpsRedirection();
             app.UseMvc();
         }

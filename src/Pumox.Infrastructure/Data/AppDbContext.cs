@@ -21,6 +21,6 @@ namespace Pumox.Infrastructure.Data
             modelBuilder.Entity<Employe>()
                         .Property(e => e.JobTitle)
                         .HasConversion(converter);
-        }  
+        }
     }
 }

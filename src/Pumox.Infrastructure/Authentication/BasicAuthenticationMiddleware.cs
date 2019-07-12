@@ -10,10 +10,10 @@ namespace Pumox.Infrastructure.Authentication
     public class BasicAuthenticationMiddleware : IMiddleware
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly FakedAdmins _admins;
+        private readonly Admins _admins;
 
         public BasicAuthenticationMiddleware(IHttpContextAccessor httpContextAccessor,
-                                             FakedAdmins admins)
+                                             Admins admins)
         {
             _httpContextAccessor = httpContextAccessor;
             _admins = admins;

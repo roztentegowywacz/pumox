@@ -1,7 +1,9 @@
 @url = https://localhost:5001
+@token = QWRtaW46U2VjcmV0
 
 ### CREATE new company
 POST {{url}}/company/create
+Authorization: Basic {{token}}
 Content-Type: application/json
 
 {
