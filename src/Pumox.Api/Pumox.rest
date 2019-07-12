@@ -17,3 +17,15 @@ Content-Type: application/json
         },
     ]
 }
+
+
+### SEARCH companies
+POST {{url}}/company/search
+Content-Type: application/json
+
+{
+    "keyword": "nowa",
+    "employeeDateOfBirthFrom": "2000-03-20",
+    "employeeDateOfBirthTo": "2020-01-01",
+    "employeeJobTitles": ["Manager"]
+}

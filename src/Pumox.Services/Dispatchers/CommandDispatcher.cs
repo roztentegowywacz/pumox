@@ -14,7 +14,7 @@ namespace Pumox.Services.Dispatchers
 
         public async Task SendAsync<T>(T command) where T : ICommand
         {
-            var handler = _provider.Resolve<ICommandHandler<T>>();
+            dynamic handler = _provider.Resolve(typeof(ICommandHandler<T>));
 
             if (handler is null)
             {

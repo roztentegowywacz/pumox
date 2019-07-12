@@ -12,23 +12,24 @@ namespace Pumox.Services
 {
     public static class Extensions
     {
-        public static T Resolve<T>(this IServiceProvider provider)
+        public static dynamic Resolve(this IServiceProvider provider, Type classType)
         {
             var assembly = Assembly.GetExecutingAssembly();
             
             foreach(var type in assembly.DefinedTypes)
             {
-                if (type.ImplementedInterfaces.Contains(typeof(T)))
-                    return (T)ActivatorUtilities.CreateInstance(provider, type.AsType());
+                if (type.ImplementedInterfaces.Contains(classType))
+                    return ActivatorUtilities.CreateInstance(provider, type.AsType());
             }
 
-            return default(T);
+            return null;
         }
 
         public static IServiceCollection RegisterAllServices(this IServiceCollection services)
         {
             services.AddScoped<IDispatcher, Dispatcher>();
             services.AddScoped<ICommandDispatcher, CommandDispatcher>();
+            services.AddScoped<IQueryDispatcher, QueryDispatcher>();
             return services;
         }
 

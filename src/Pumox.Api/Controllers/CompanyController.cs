@@ -4,6 +4,7 @@ using Pumox.Infrastructure.Authentication;
 using Pumox.Services.Companies.Commands.CreateCompany;
 using Pumox.Services.Companies.Commands.DeleteCompany;
 using Pumox.Services.Companies.Commands.UpdateCompany;
+using Pumox.Services.Companies.Queries.SearchCompany;
 using Pumox.Services.Dispatchers;
 
 namespace Pumox.Api.Controllers
@@ -20,6 +21,19 @@ namespace Pumox.Api.Controllers
             await _dispatcher.SendAsync(command);
 
             return Ok();
+        }
+
+        [HttpPost("search")]
+        public async Task<IActionResult> Search(SearchCompanyQuery query)
+        {
+            var companies = await _dispatcher.QueryAsync(query);
+
+            if (companies is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(companies);
         }
 
         [BaseAuth]
