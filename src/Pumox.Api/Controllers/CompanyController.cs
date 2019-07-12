@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Pumox.Infrastructure.Authentication;
 using Pumox.Services.Companies.Commands.CreateCompany;
 using Pumox.Services.Companies.Commands.DeleteCompany;
 using Pumox.Services.Companies.Commands.UpdateCompany;
@@ -12,6 +13,7 @@ namespace Pumox.Api.Controllers
         public CompanyController(IDispatcher dispatcher) : base(dispatcher)
         { }
 
+        [BaseAuth]
         [HttpPost("create")]
         public async Task<IActionResult> Post(CreateCompanyCommand command)
         {
@@ -20,7 +22,8 @@ namespace Pumox.Api.Controllers
             return Ok();
         }
 
-        [HttpPut("update/{id:ulong}")]
+        [BaseAuth]
+        [HttpPut("update/{id}")]
         public async Task<IActionResult> Put([FromRoute] ulong id, UpdateCompanyCommand command)
         {
             command.Id = id;
@@ -30,7 +33,8 @@ namespace Pumox.Api.Controllers
             return NoContent();
         }
 
-        [HttpDelete("delete/{id:ulong}")]
+        [BaseAuth]
+        [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete([FromRoute] ulong id)
         {
             await _dispatcher.SendAsync(new DeleteCompanyCommand(id));

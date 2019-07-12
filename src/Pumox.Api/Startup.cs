@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pumox.Infrastructure.Authentication;
 using Pumox.Infrastructure.Data;
 using Pumox.Infrastructure.Mvc;
 using Pumox.Services;
@@ -23,7 +24,8 @@ namespace Pumox.Api
             services.RegisterAllRepositories();
             services.RegisterAllServices();
             services.RegisterAllValidators();
-
+            services.AddBasicAuthentication();
+            services.ConfigureFakeAdmins();
             services.AddSqlite();
             services.AddCustomMvc();
         }

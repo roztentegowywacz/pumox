@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Pumox.Infrastructure.Authentication;
 using Pumox.Services.Dispatchers;
 
 namespace Pumox.Api.Controllers

@@ -7,13 +7,13 @@ Content-Type: application/json
 {
     "name": "nowa firma3",
     "establishmentYear": 2019,
-    "Employees": 
+    "employees": 
     [
         {
-            "DateOfBirth": "2012-03-21T00:00Z",
-            "FirstName": "imie3",
-            "LastName": "nazwisko3",
-            "JobTitle": "Manager"
+            "firstName": "imie3",
+            "lastName": "nazwisko3",
+            "dateOfBirth": "2012-03-21T00:00Z",
+            "jobTitle": "Manager"
         },
     ]
 }

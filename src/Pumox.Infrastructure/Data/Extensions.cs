@@ -1,4 +1,3 @@
-using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,9 +27,6 @@ namespace Pumox.Infrastructure.Data
         }
 
         public static IServiceCollection RegisterAllRepositories(this IServiceCollection services)
-        {
-            services.AddTransient<ICompaniesRepository, CompaniesRepository>();
-            return services;
-        }
+            => services.AddTransient<ICompaniesRepository, CompaniesRepository>();
     }
 }

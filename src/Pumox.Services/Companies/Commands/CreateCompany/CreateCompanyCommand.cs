@@ -26,6 +26,17 @@ namespace Pumox.Services.Companies.Commands.CreateCompany
             public string LastName { get; }
             public DateTime DateOfBirth { get; }
             public JobTitle JobTitle { get; }
+
+            [JsonConstructor]
+            public CreateEmployer(string firstName, string lastName,
+                DateTime dateOfBirth, JobTitle jobTitle)
+            {
+                FirstName = firstName;
+                LastName = lastName;
+                DateOfBirth = dateOfBirth;
+                JobTitle = jobTitle;
+            }
         }
+
     }
 }
