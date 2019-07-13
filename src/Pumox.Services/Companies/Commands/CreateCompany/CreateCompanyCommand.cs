@@ -5,7 +5,7 @@ using Pumox.Core.Types.Enums;
 
 namespace Pumox.Services.Companies.Commands.CreateCompany
 {
-    public class CreateCompanyCommand : ICommand
+    public class CreateCompanyCommand : ICommand<ulong>
     {
         public string Name { get; }
         public int EstablishmentYear { get; }

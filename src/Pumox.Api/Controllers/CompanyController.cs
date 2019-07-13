@@ -18,9 +18,9 @@ namespace Pumox.Api.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> Post(CreateCompanyCommand command)
         {
-            await _dispatcher.SendAsync(command);
+            var companyId = await _dispatcher.SendAndResponseDataAsync(command);
 
-            return Ok();
+            return CreatedAtAction(null, companyId);
         }
 
         [HttpPost("search")]
@@ -39,9 +39,7 @@ namespace Pumox.Api.Controllers
         [BaseAuth]
         [HttpPut("update/{id}")]
         public async Task<IActionResult> Put([FromRoute] ulong id, UpdateCompanyCommand command)
-        {
-            command.Id = id;
-            
+        {            
             await _dispatcher.SendAsync(command);
             
             return NoContent();

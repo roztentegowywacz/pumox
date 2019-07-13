@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Pumox.Core.Domain.Entities;
 using Pumox.Core.Domain.Repositories;
+using Pumox.Core.Types.Exceptions;
 
 namespace Pumox.Services.Companies.Commands.UpdateCompany
 {
@@ -20,12 +21,12 @@ namespace Pumox.Services.Companies.Commands.UpdateCompany
             
             if (company is null)
             {
-                // TODO: rzuć wyjtkiem albo coś
+                throw new NotFoundException(typeof(Company), command.Id);
             }
 
             company.Name = command.Name;
             company.EstablishmentYear = command.EstablishmentYear;
-            company.Employees = command.Employees.Select(x => new Employe() 
+            company.Employees = command.Employees?.Select(x => new Employe() 
             {
                 DateOfBirth = x.DateOfBirth,
                 FirstName = x.FirstName,

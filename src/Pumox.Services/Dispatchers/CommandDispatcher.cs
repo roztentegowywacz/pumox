@@ -24,5 +24,21 @@ namespace Pumox.Services.Dispatchers
 
             await handler.HandleAsync(command);
         }
+
+        public async Task<TResult> SendAndResponseDataAsync<TResult>(ICommand<TResult> command)
+        {
+            var handlerType = typeof(ICommandHandler<,>)
+                .MakeGenericType(command.GetType(), typeof(TResult));
+            
+            dynamic handler = _provider.Resolve(handlerType);
+
+            if (handler is null)
+            {
+                throw new ArgumentException($"Command handler: '{handlerType.Name} was not found.'",
+                    nameof(handler));
+            }
+
+            return await handler.HandleAsync((dynamic)command);
+        }
     }
 }

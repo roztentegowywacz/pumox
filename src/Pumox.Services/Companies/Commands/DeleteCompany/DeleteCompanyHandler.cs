@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
+using Pumox.Core.Domain.Entities;
 using Pumox.Core.Domain.Repositories;
+using Pumox.Core.Types.Exceptions;
 
 namespace Pumox.Services.Companies.Commands.DeleteCompany
 {
@@ -18,7 +20,7 @@ namespace Pumox.Services.Companies.Commands.DeleteCompany
             
             if (company is null)
             {
-                // TODO: rzuć wyjtkiem albo coś
+                throw new NotFoundException(typeof(Company), command.Id);
             }
 
             _companiesRepository.Remove(company);

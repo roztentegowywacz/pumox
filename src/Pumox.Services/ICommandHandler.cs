@@ -6,4 +6,9 @@ namespace Pumox.Services
     {
         Task HandleAsync(T command);
     }
+
+    public interface ICommandHandler<T, TResult> where T : ICommand<TResult>
+    {
+        Task<TResult> HandleAsync(T command);
+    }
 }

@@ -7,17 +7,17 @@ Authorization: Basic {{token}}
 Content-Type: application/json
 
 {
-    "name": "nowa firma3",
+    "name": "nowa firma300",
     "establishmentYear": 2019,
-    "employees": 
-    [
-        {
-            "firstName": "imie3",
-            "lastName": "nazwisko3",
-            "dateOfBirth": "2012-03-21T00:00Z",
-            "jobTitle": "Manager"
-        },
-    ]
+    # "employees": 
+    # [
+    #     {
+    #         "firstName": "imie3",
+    #         "lastName": "nazwisko3",
+    #         "dateOfBirth": "2012-03-21T00:00Z",
+    #         "jobTitle": "Manager"
+    #     },
+    # ]
 }
 
 

@@ -5,7 +5,7 @@ using Pumox.Core.Domain.Repositories;
 
 namespace Pumox.Services.Companies.Commands.CreateCompany
 {
-    public class CreateCompanyHandler : ICommandHandler<CreateCompanyCommand>
+    public class CreateCompanyHandler : ICommandHandler<CreateCompanyCommand, ulong>
     {
         private readonly ICompaniesRepository _companiesRepository;
 
@@ -14,13 +14,13 @@ namespace Pumox.Services.Companies.Commands.CreateCompany
             _companiesRepository = companiesRepository;
         }
 
-        public async Task HandleAsync(CreateCompanyCommand command)
+        public async Task<ulong> HandleAsync(CreateCompanyCommand command)
         {
             var company = new Company()
             {
                 Name = command.Name,
                 EstablishmentYear = command.EstablishmentYear,
-                Employees = command.Employees.Select(x => new Employe() 
+                Employees = command.Employees?.Select(x => new Employe() 
                 {
                     DateOfBirth = x.DateOfBirth,
                     FirstName = x.FirstName,
@@ -30,7 +30,8 @@ namespace Pumox.Services.Companies.Commands.CreateCompany
             };
             _companiesRepository.Add(company);
             await _companiesRepository.SaveChangesAsync();
-            var companyId = company.Id;
+            
+            return company.Id;
         }
     }
 }

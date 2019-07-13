@@ -6,7 +6,7 @@ namespace Pumox.Services.Companies.Commands.DeleteCompany
     {
         public DeleteCompanyValidator() 
         {
-            RuleFor(x => x.Id).NotNull();
+            RuleFor(x => x.Id).NotEmpty();
         }
     }
 }

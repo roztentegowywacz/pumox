@@ -8,9 +8,9 @@ namespace Pumox.Services.Companies.Commands.UpdateCompany
     {
         public UpdateCompanyValidator() 
         {
-            RuleFor(x => x.Id).NotNull();
-            RuleFor(x => x.Name).NotNull();
-            RuleFor(x => x.EstablishmentYear).NotNull();
+            RuleFor(x => x.Id).NotEmpty();
+            RuleFor(x => x.Name).NotEmpty();
+            RuleFor(x => x.EstablishmentYear).NotEmpty();
             RuleForEach(x => x.Employees)
                 .SetValidator(new UpdateEmployerValidator())
                 .When(x => x.Employees.Any());
@@ -21,10 +21,10 @@ namespace Pumox.Services.Companies.Commands.UpdateCompany
     {
         public UpdateEmployerValidator()
         {
-            RuleFor(x => x.FirstName).NotNull();
-            RuleFor(x => x.LastName).NotNull();
-            RuleFor(x => x.DateOfBirth).NotNull();
-            RuleFor(x => x.JobTitle).NotNull().IsInEnum();
+            RuleFor(x => x.FirstName).NotEmpty();
+            RuleFor(x => x.LastName).NotEmpty();
+            RuleFor(x => x.DateOfBirth).NotEmpty();
+            RuleFor(x => x.JobTitle).NotEmpty().IsInEnum();
         }        
     }
 }

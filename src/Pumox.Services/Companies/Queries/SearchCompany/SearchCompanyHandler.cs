@@ -51,7 +51,7 @@ namespace Pumox.Services.Companies.Queries.SearchCompany
             {
                 Name = c.Name,
                 EstablishmentYear = c.EstablishmentYear,
-                Employees = c.Employees.Select(e => new EmployeDto()
+                Employees = c.Employees?.Select(e => new EmployeDto()
                 {
                     DateOfBirth = e.DateOfBirth,
                     FirstName = e.FirstName,
