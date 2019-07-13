@@ -14,6 +14,9 @@ namespace Pumox.Api.Controllers
         public CompanyController(IDispatcher dispatcher) : base(dispatcher)
         { }
 
+        [Route("")]
+        public IActionResult Get() => Ok("Pumox Api works!");
+
         [BaseAuth]
         [HttpPost("create")]
         public async Task<IActionResult> Post(CreateCompanyCommand command)
