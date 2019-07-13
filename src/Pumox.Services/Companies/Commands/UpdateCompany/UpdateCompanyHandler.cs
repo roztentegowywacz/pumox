@@ -17,11 +17,11 @@ namespace Pumox.Services.Companies.Commands.UpdateCompany
 
         public async Task HandleAsync(UpdateCompanyCommand command)
         {
-            var company = await _companiesRepository.GetWithEmployeesAsync(command.Id);
+            var company = await _companiesRepository.GetWithEmployeesAsync((ulong)command.Id);
             
             if (company is null)
             {
-                throw new NotFoundException(typeof(Company), command.Id);
+                throw new NotFoundException(typeof(Company), (ulong)command.Id);
             }
 
             company.Name = command.Name;

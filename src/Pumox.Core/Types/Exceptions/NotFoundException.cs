@@ -10,7 +10,7 @@ namespace Pumox.Core.Types.Exceptions
         public NotFoundException(Type entityType, ulong entityId)
         {
             EntityId = entityId;
-            Message = $"Entity {entityType.GetType()} with an Id: '{entityId}' "
+            Message = $"Entity {entityType.Name} with an Id: '{entityId}' "
                 + "was not found.";
         }
     }

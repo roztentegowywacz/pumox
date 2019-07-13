@@ -1,5 +1,6 @@
 @url = https://localhost:5001
 @token = QWRtaW46U2VjcmV0
+@comapnyId = #--CompanyId--#
 
 ### CREATE new company
 POST {{url}}/company/create
@@ -7,17 +8,17 @@ Authorization: Basic {{token}}
 Content-Type: application/json
 
 {
-    "name": "nowa firma300",
-    "establishmentYear": 2019,
-    # "employees": 
-    # [
-    #     {
-    #         "firstName": "imie3",
-    #         "lastName": "nazwisko3",
-    #         "dateOfBirth": "2012-03-21T00:00Z",
-    #         "jobTitle": "Manager"
-    #     },
-    # ]
+    "name": "Pumox",
+    "establishmentYear": 2000,
+    "employees": 
+    [
+        {
+            "firstName": "Tomasz",
+            "lastName": "Klag",
+            "dateOfBirth": "1992-01-03",
+            "jobTitle": "Developer"
+        },
+    ]
 }
 
 
@@ -26,8 +27,38 @@ POST {{url}}/company/search
 Content-Type: application/json
 
 {
-    "keyword": "nowa",
-    "employeeDateOfBirthFrom": "2000-03-20",
+    "keyword": "Pumox",
+    "employeeDateOfBirthFrom": "2000-01-01",
     "employeeDateOfBirthTo": "2020-01-01",
-    "employeeJobTitles": ["Manager"]
+    "employeeJobTitles": ["Developer", "Manager"]
 }
+
+
+### UPDATE company by id
+PUT {{url}}/company/update/{{comapnyId}}
+Authorization: Basic {{token}}
+Content-Type: application/json
+
+{
+    "name": "Pumox",
+    "establishmentYear": 2000,
+    "employees": 
+    [
+        {
+            "firstName": "Tomasz",
+            "lastName": "Klag",
+            "dateOfBirth": "1992-01-03",
+            "jobTitle": "Developer"
+        },
+        {
+            "firstName": "Mikoaj",
+            "lastName": "Kopernik",
+            "dateOfBirth": "1473-02-19",
+            "jobTitle": "Manager"
+        }
+    ]
+}
+
+### DELETE company by id
+DELETE {{url}}/company/delete/{{comapnyId}}
+Authorization: Basic {{token}}

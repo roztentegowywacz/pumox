@@ -8,7 +8,6 @@ namespace Pumox.Services.Companies.Commands.UpdateCompany
     {
         public UpdateCompanyValidator() 
         {
-            RuleFor(x => x.Id).NotEmpty();
             RuleFor(x => x.Name).NotEmpty();
             RuleFor(x => x.EstablishmentYear).NotEmpty();
             RuleForEach(x => x.Employees)

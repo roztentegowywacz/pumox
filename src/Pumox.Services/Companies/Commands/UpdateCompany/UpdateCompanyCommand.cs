@@ -7,7 +7,7 @@ namespace Pumox.Services.Companies.Commands.UpdateCompany
 {
     public class UpdateCompanyCommand : ICommand
     {
-        public ulong Id { get; set; }
+        public ulong? Id { get; set; }
         public string Name { get; }
         public int EstablishmentYear { get; }
         public IEnumerable<UpdateEmployer> Employees { get; } = new List<UpdateEmployer>();
@@ -27,6 +27,16 @@ namespace Pumox.Services.Companies.Commands.UpdateCompany
             public string LastName { get; }
             public DateTime DateOfBirth { get; }
             public JobTitle JobTitle { get; }
+
+            [JsonConstructor]
+            public UpdateEmployer(string firstName, string lastName,
+                DateTime dateOfBirth, JobTitle jobTitle)
+            {
+                FirstName = firstName;
+                LastName = lastName;
+                DateOfBirth = dateOfBirth;
+                JobTitle = jobTitle;
+            }
         }
     }
 }
